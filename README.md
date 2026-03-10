@@ -89,8 +89,8 @@ class MedicinePrescribingAgent:
 
 agent = MedicinePrescribingAgent()
 agent.run_agent(cycles=2)
-
 ```
+<hr>
 
 <h3>Output:</h3>
 
