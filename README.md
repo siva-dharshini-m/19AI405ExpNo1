@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: NALINIPRIYA G </h3>
-<h3>Register Number/Staff Id: TSIT031</h3>
+<h3>Name: SIVA DHARSHINI M </h3>
+<h3>Register Number:212224060253</h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,64 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+<hr>
+<h3>Program:</h3>
+
+```
+
+import random
+
+class MedicinePrescribingAgent:
+    def __init__(self):
+        self.performance = 0
+        self.rooms = ["Room 1", "Room 2"]
+        self.current_room = self.rooms[0]
+        self.environment = {}
+
+    def sense_environment(self):
+        temperature = round(random.uniform(97, 102), 1)
+        self.environment[self.current_room] = temperature
+        return temperature
+
+    def prescribe_medicine(self, temperature):
+        print(f"Checking {self.current_room}... Patient temperature: {temperature}°F")
+        if temperature > 98.5:
+            print(f"Treatment given in {self.current_room}.")
+            self.performance += 10
+        else:
+            print(f"No treatment needed in {self.current_room}.")
+
+    def move_to_other_room(self):
+        self.current_room = (
+            "Room 2" if self.current_room == "Room 1" else "Room 1"
+        )
+        print(f"\nMoving from {'Room 1' if self.current_room == 'Room 2' else 'Room 2'} to {self.current_room}...")
+        self.performance -= 1
+
+    def run_agent(self, cycles=2):
+        print("Medicine Prescribing Agent Simulation Started\n")
+        for _ in range(cycles):
+            temp = self.sense_environment()
+            self.prescribe_medicine(temp)
+            self.move_to_other_room()
+
+        print("\nSimulation Complete!")
+        print("Final Performance Score:", self.performance)
+        print("Environment State:", self.environment)
+
+
+agent = MedicinePrescribingAgent()
+agent.run_agent(cycles=2)
+
+```
+
+<h3>Output:</h3>
+
+<img width="566" height="389" alt="image" src="https://github.com/user-attachments/assets/67994900-d63a-4437-951f-213381319d65" />
+
+<hr>
+<h3>Result:</h3>
+
+The AI medicine prescribing agent was successfully implemented.
+
